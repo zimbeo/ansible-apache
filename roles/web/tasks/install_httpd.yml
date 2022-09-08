@@ -1,15 +1,15 @@
 ---
-# These tasks install http and the php modules.
 
-- name: Install http and php etc
+- name: Install Apache2
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   with_items:
-   - httpd
+   - apache2
+  become: yes
 
 - name: http service state
   service:
-    name: httpd
+    name: apache2
     state: started
     enabled: yes
